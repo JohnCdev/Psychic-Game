@@ -43,3 +43,4 @@ function reset() {
     left.innerHTML = " " + leftCount;
     guesses.innerHTML = "";
 }
+
