@@ -3,13 +3,11 @@ var losses = document.getElementById("losses");
 var left = document.getElementById("left");
 var guesses = document.getElementById("guesses");
 
-// var computerChoices = ["q","w","e","r","t","y","u","i","o","p"];
-var computerChoices = ["q","w","e","r"]
+var computerChoices = ["q","w","e","r","t","y","u","i","o","p"];
 
 var winsCount = 0;
 var lossesCount = 0;
-var leftCount = 3;
-var guesses = 0;
+var leftCount = 10;
 
 left.innerHTML = " " + leftCount;
 
@@ -24,12 +22,14 @@ document.onkeyup = function (event) {
 
     var userGuess = event.key;
 
+    guesses.append(" " + userGuess + ",");
+
     if (userGuess === computerGuess) {
         winsCount++;
         alert("You did it!");
         wins.innerHTML = " " + winsCount;
         reset();
-    } else if(leftCount === 0) {
+    } else if (leftCount === 0) {
         lossesCount++;
         losses.innerHTML = " " + lossesCount;
         alert("You're out of guesses! You lose!")
@@ -37,12 +37,12 @@ document.onkeyup = function (event) {
     } else {
         leftCount--;
         left.innerHTML = " " + leftCount;
-        //guesses.insertAdjacentHTML(" " + userGuess + ",");
     }
 }
 
 function reset() {
     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    leftCount = 3;
+    leftCount = 10;
     left.innerHTML = " " + leftCount;
+    guesses.innerHTML = "";
 }
