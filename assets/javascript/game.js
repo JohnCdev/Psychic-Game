@@ -13,7 +13,7 @@ var leftCount = 10;
 
 left.innerHTML = " " + leftCount;
 
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+reset();
 
 document.onkeyup = function (event) {
 
@@ -26,7 +26,7 @@ document.onkeyup = function (event) {
         alert("You did it!");
         wins.innerHTML = " " + winsCount;
         reset();
-    } else if (leftCount === 0) {
+    } else if (leftCount === 1) {
         lossesCount++;
         losses.innerHTML = " " + lossesCount;
         alert("You're out of guesses! You lose!")
@@ -39,6 +39,7 @@ document.onkeyup = function (event) {
 
 function reset() {
     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerGuess);
     leftCount = 10;
     left.innerHTML = " " + leftCount;
     guesses.innerHTML = "";
